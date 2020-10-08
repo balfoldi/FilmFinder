@@ -6,4 +6,7 @@
   <li>-lazy load</li>
   <li>-scroll events</li>
   <br>
+  
+  You are welcome to play the custome navbar sound to embed yourself in the go getter like mist.
+  
   <a href='http://www.gogetter123456798.tk/'>Go to the website</a>
