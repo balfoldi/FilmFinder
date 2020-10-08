@@ -2,7 +2,7 @@ const API = "5cf72b5a"
 const holder = document.getElementById("holder")
 const searchBtn = document.getElementById("search")
 const searchBar = document.querySelector("input")
-
+var fetchCount = 0
 const displayIndex = (response) => {
   console.log("Response Search is ...")
   console.log(response)
@@ -13,6 +13,11 @@ const displayIndex = (response) => {
 }
 
 const writeIndexHTML = (response) => {
+  var options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+  }
   var response = response
   console.log("writing HTML ...")
   response.Search.forEach ((film) => {
@@ -39,12 +44,6 @@ const writeIndexHTML = (response) => {
       process()
     })
     console.log(cardHolder)
-
-    var options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5
-    }
     var callback = function(entries, observer) { 
       entries.forEach(entry => {
         if (entry.isIntersecting){
@@ -61,9 +60,24 @@ const writeIndexHTML = (response) => {
       observer.observe(cardHolder)
     }
     setTimeout(observe,1000)
-    //cardHolder.classList.remove("slide-come")
-    //cardHolder.classList.add("hide")
   });
+  lastCardHolder = document.getElementById(response.Search[9].imdbID)
+  var callback = function(entries, observer) { 
+    entries.forEach(entry => {
+      var trigered = false
+      if (entry.isIntersecting && !trigered){
+        trigered = true
+        fetchCount ++
+        let process = buildGetResponse(`s=${searchBar.value.replace(" ", "_")}&page=${fetchCount}`, displayIndex)
+        process()
+      }
+    });
+  };
+  var observer = new IntersectionObserver(callback, options)
+  const observe = () => {
+    observer.observe(lastCardHolder)
+  }
+  setTimeout(observe,1000)
 };
 
 const displayShow = (response) => {
@@ -119,6 +133,7 @@ const buildGetResponse = (urlFragment, method) => {
 searchBtn.addEventListener("click", () => {
   console.log('click')
   holder.innerHTML = "";
+  fetchCount = 2;
   let process = buildGetResponse(`s=${searchBar.value.replace(" ", "_")}&page=1`, displayIndex)
   process()
 })
