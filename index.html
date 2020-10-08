@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html class='h-100'>
   <head>
-    <title>Bobysnake</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/apple-icon-60x60.png">
+    <title>Open film database displayer</title>
+    <link rel='stylesheet' href="stylesheets/main.css">
     <script src="https://kit.fontawesome.com/46962466a1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   
-  <body class='bg-light h-100 d-flex justify-content-center'>
-    <div id="holder" class='container'>
+  <body class='bg-light h-100 d-flex flex-wrap justify-content-center'>
+    <navbar class='w-100 bg-light shadow border-bottom d-flex justify-content-between'>
+      <div class='row'>
+        <img src='images/gogetter.png' alt='gogetter' class="img-navbar">
+        <h3 class='align-self-center'>Go-Getter Film Engine</h3>
+      </div>
+      <div>
+        <input type='text-field' class='h-50 mt-3 mr-2' placeholder="Youre dream's film title">
+        <div class='btn btn-primary mr-2' id="search">Go Get The Films</div>
+      </div>
+    </navbar>
+    <div id="holder" class='container d-flex flex-column justify-content-around'>
 
     </div>
   </body>
 
-  <script type='text/javascript' src="index.js"></script>  
+  <script type='text/javascript' src="javascript/get_film.js"></script>  
+  <script type='text/javascript' src="javascript/animation.js"></script>  
 
 
 </html>

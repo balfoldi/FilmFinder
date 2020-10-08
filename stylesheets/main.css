@@ -1,0 +1,72 @@
+navbar{
+  position: fixed;
+  height: 70px;
+  z-index: 5;
+}
+
+#holder{
+  padding-top: 90px;
+}
+
+.img-navbar{
+  height: 70px;
+}
+
+.popup{
+  z-index: 5;
+  margin-top: 70px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))
+}
+
+.card-popup{
+  width: 75%;
+}
+
+.hide{
+  opacity: 0;
+}
+
+.slide-come {
+  position: relative;
+  animation-name: slinding-come;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slinding-come {
+  0% {
+    opacity: 0;
+    left: -2000px;
+  }
+  100% {
+    opacity: 1;
+    left: 0px;
+  }
+}
+
+.slide-come-leave {
+  opacity: 0;
+  position: relative;
+  animation-name: slinding-come-leave;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slinding-come-leave {
+  0% {
+    opacity: 0;
+    left: -2000px;
+  }
+  50% {
+    opacity: 1;
+    left: 0px;
+  }
+  100% {
+    opacity: 0;
+    left: -2000px;
+  }
+}
+
