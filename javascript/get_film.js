@@ -1,4 +1,5 @@
-const API = "5cf72b5a"
+
+const API = window.prompt("Go give your api key.")
 const holder = document.getElementById("holder")
 const searchBtn = document.getElementById("search")
 const searchBar = document.querySelector("input")
