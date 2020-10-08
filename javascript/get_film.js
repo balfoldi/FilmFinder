@@ -63,10 +63,12 @@ const writeIndexHTML = (response) => {
     setTimeout(observe,1000)
   });
   lastCardHolder = document.getElementById(response.Search[9].imdbID)
+  lastCardHolder.classList.add("load-ready")
   var callback = function(entries, observer) { 
     entries.forEach(entry => {
-      if (entry.isIntersecting && Array.from(entry.target.children[0].classList).includes("hide")){
+      if (entry.isIntersecting && Array.from(entry.target.classList).includes("load-ready")){
         fetchCount ++
+        lastCardHolder.classList.remove("load-ready")
         let process = buildGetResponse(`s=${searchBar.value.replace(" ", "_")}&page=${fetchCount}`, displayIndex)
         process()
       }
