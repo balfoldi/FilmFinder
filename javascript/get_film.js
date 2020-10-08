@@ -46,7 +46,8 @@ const writeIndexHTML = (response) => {
     console.log(cardHolder)
     var callback = function(entries, observer) { 
       entries.forEach(entry => {
-        if (entry.isIntersecting){
+        if (entry.isIntersecting && Array.from(entry.target.children[0].classList).includes("hide")) {
+          console.log(entry.time)
           console.log("Animating..." + entry.target.id)
           entry.target.children[0].classList.remove("hide")
           entry.target.children[0].classList.add("slide-come-leave")
@@ -64,9 +65,7 @@ const writeIndexHTML = (response) => {
   lastCardHolder = document.getElementById(response.Search[9].imdbID)
   var callback = function(entries, observer) { 
     entries.forEach(entry => {
-      var trigered = false
-      if (entry.isIntersecting && !trigered){
-        trigered = true
+      if (entry.isIntersecting && Array.from(entry.target.children[0].classList).includes("hide")){
         fetchCount ++
         let process = buildGetResponse(`s=${searchBar.value.replace(" ", "_")}&page=${fetchCount}`, displayIndex)
         process()
