@@ -104,7 +104,7 @@ const buildGetResponse = (urlFragment, method) => {
   const process = method
   let getResponse = () => {
     let process = method
-    let url = `http://www.omdbapi.com/?${urlblock}&apikey=${API}`
+    let url = `https://www.omdbapi.com/?${urlblock}&apikey=${API}`
     console.log("target URL is " + url.replace(API, "********"))
     fetch(url, {
       method: "GET",
